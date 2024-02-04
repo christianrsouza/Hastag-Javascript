@@ -1,5 +1,9 @@
-const imagemVisualizacao = document.getElementById('imagem-visualizacao');
+const nomeCorSelecionada = document.getElementById('nome-cor-selecionada');
 const tituloProduto = document.getElementById('titulo-produto');
+const imagemVisualizacao = document.getElementById('imagem-visualizacao');
+const opcaoImagem0 = document.getElementById('0-imagem-miniatura');
+const opcaoImagem1 = document.getElementById('1-imagem-miniatura');
+const opcaoImagem2 = document.getElementById('2-imagem-miniatura');
 
 
 const verdeCipreste = {
@@ -50,7 +54,7 @@ function trocarTamanho(){
         imagemVisualizacao.classList.remove('caixa-pequena');
     }
     // mudar o titulo do produto
-    tituloProduto.innerText = "Pulseira loop esportiva azul-inverno para caixa de " + opcoesTamanho[tamanhoSelecionado];
+    tituloProduto.innerText = "Pulseira loop esportiva " + opcoesCores[corSelecionada].nome +" para caixa de " + opcoesTamanho[tamanhoSelecionado];
 }
 
 function trocarCor(){
@@ -58,9 +62,15 @@ function trocarCor(){
     const idOpcaoSelecionada = document.querySelector('[name="opcao-cor"]:checked').id;
     corSelecionada = idOpcaoSelecionada.charAt(0);
     //trocar titulo da página
-    tituloProduto.innerText = "Pulseira loop esportiva" + "para caixa de " + opcoesTamanho[tamanhoSelecionado];
+    tituloProduto.innerText = "Pulseira loop esportiva " + opcoesCores[corSelecionada].nome +" para caixa de " + opcoesTamanho[tamanhoSelecionado];
 
     //trocar nome da cor
+    nomeCorSelecionada.innerText = `Cor - ${opcoesCores[corSelecionada].nome}`;
+    
     // trocar imagens das miniaturas exibidas
+    imagemVisualizacao.src = `./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-${imagemSelecionada}.jpeg`;
+    opcaoImagem0.src = `./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-0.jpeg`;
+    opcaoImagem1.src = `./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-1.jpeg`;
+    opcaoImagem2.src = `./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-2.jpeg`;
     //trocar imagem de visualização 
 }
